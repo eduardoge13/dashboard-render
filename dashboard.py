@@ -5,6 +5,7 @@ from dash import dcc
 from dash import html
 #from dash.dependencies import Input, Output
 import plotly.express as px
+server=app.server
 #Datos
 
 spdf = pd.read_csv("/data/spdf_nacional.csv")
