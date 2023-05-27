@@ -1,16 +1,17 @@
 import geopandas as gpd
 import pandas as pd
-import dash
+from dash import Dash
 from dash import dcc
 from dash import html
 #from dash.dependencies import Input, Output
 import plotly.express as px
 #Datos
 
-spdf = pd.read_csv("/data/spdf_nacional.csv")
+
+spdf = pd.read_csv("C:/Users/eduar/Downloads/Tesis/dashboard-render/data/spdf_nacional.csv")
 spdf = spdf.loc[:,["cvegeo", 'mean_ntl', 'max_ntl', 'min_ntl', 'median_sum_ntl', 'median_ntl']]
-pov_ntl_shp = gpd.read_file("/shapefile/pov_index_ntl.shp")
-map_prueba = gpd.read_file("/shapefileinegi/marco_municipal_04_23.shp")
+pov_ntl_shp = gpd.read_file("C:/Users/eduar/Downloads/Tesis/dashboard-render/data/shapefile/pov_index_ntl.shp")
+map_prueba = gpd.read_file("C:/Users/eduar/Downloads/Tesis/dashboard-render/data/shapefileinegi/marco_municipal_04_23.shp")
 #  transfromacion de datos
 pov_ntl_shp = pov_ntl_shp.join(spdf.set_index("cvegeo"), on="cvegeo", how = "left")
 
@@ -45,8 +46,8 @@ map2 = px.choropleth_mapbox(pov_ntl_shp, geojson=pov_ntl_shp.geometry,
 
 
 # App
-app = dash.Dash(__name__)
-
+app = Dash(__name__)
+server=app.server
 # Layout
 app.layout = html.Div([
     html.H1("Dashboard"),
@@ -73,7 +74,7 @@ app.layout = html.Div([
    
 
 if __name__ == '__main__':
-    app.run_server(debug=True,host= '0.0.0.0')
+    app.run_server(debug=True,host= '127', port=8051)
 
 
 

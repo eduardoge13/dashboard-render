@@ -1,0 +1,4 @@
+geopandas
+pandas
+dash
+plotly.express
