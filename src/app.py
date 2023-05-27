@@ -44,7 +44,7 @@ map2 = px.choropleth_mapbox(pov_ntl_shp, geojson=pov_ntl_shp.geometry,
 
 # App
 app = Dash(__name__)
-server=app.server
+server = app.server
 # Layout
 app.layout = html.Div([
     html.H1("Dashboard"),
@@ -71,7 +71,7 @@ app.layout = html.Div([
    
 
 if __name__ == '__main__':
-    app.run_server(debug=True,host= '127.0.0.1')
+    app.run_server(debug=True)
 
 
 

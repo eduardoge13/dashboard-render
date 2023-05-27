@@ -2,3 +2,5 @@ geopandas
 pandas
 dash
 plotly.express
+gunicorn
+dash-tools
