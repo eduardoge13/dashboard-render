@@ -7,8 +7,8 @@ import plotly.express as px
 
 spdf = pd.read_csv("dashboard-render/data/spdf_nacional.csv")
 spdf = spdf.loc[:,["cvegeo", 'mean_ntl', 'max_ntl', 'min_ntl', 'median_sum_ntl', 'median_ntl']]
-pov_ntl_shp = gpd.read_file("dashboard-render/data/shapefile/pov_index_ntl.shp")
-map_prueba = gpd.read_file("dashboard-render/data/shapefileinegi/marco_municipal_04_23.shp")
+pov_ntl_shp = gpd.read_file("/./data/shapefile/pov_index_ntl.shp")
+map_prueba = gpd.read_file("/./data/shapefileinegi/marco_municipal_04_23.shp")
 #  transfromacion de datos
 pov_ntl_shp = pov_ntl_shp.join(spdf.set_index("cvegeo"), on="cvegeo", how = "left")
 
