@@ -5,10 +5,10 @@ from dash import Dash, html, dcc
 import plotly.express as px
 #Datos
 
-spdf = pd.read_csv("/data/spdf_nacional.csv")
+spdf = pd.read_csv("/src/data/spdf_nacional.csv")
 spdf = spdf.loc[:,["cvegeo", 'mean_ntl', 'max_ntl', 'min_ntl', 'median_sum_ntl', 'median_ntl']]
-pov_ntl_shp = gpd.read_file("/data/shapefile/pov_index_ntl.shp")
-map_prueba = gpd.read_file("/data/shapefileinegi/marco_municipal_04_23.shp")
+pov_ntl_shp = gpd.read_file("/src/data/shapefile/pov_index_ntl.shp")
+map_prueba = gpd.read_file("/src/data/shapefileinegi/marco_municipal_04_23.shp")
 #  transfromacion de datos
 pov_ntl_shp = pov_ntl_shp.join(spdf.set_index("cvegeo"), on="cvegeo", how = "left")
 
