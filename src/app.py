@@ -1,8 +1,6 @@
 import geopandas as gpd
 import pandas as pd
-from dash import Dash
-from dash import dcc
-from dash import html
+from dash import Dash, html, dcc
 #from dash.dependencies import Input, Output
 import plotly.express as px
 #Datos
