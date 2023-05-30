@@ -4,11 +4,12 @@ from dash import Dash, html, dcc
 #from dash.dependencies import Input, Output
 import plotly.express as px
 #Datos
+#spdf_url = 'https://raw.githubusercontent.com/eduardoge13/dashboard-render/master/src/data/spdf_nacional.csv'
+spdf = pd.read_csv('src/data/spdf_nacional.csv') # por medio de github
 
-spdf = pd.read_csv("/src/data/spdf_nacional.csv")
 spdf = spdf.loc[:,["cvegeo", 'mean_ntl', 'max_ntl', 'min_ntl', 'median_sum_ntl', 'median_ntl']]
-pov_ntl_shp = gpd.read_file("/src/data/shapefile/pov_index_ntl.shp")
-map_prueba = gpd.read_file("/src/data/shapefileinegi/marco_municipal_04_23.shp")
+pov_ntl_shp = gpd.read_file('src/data/shapefile/pov_index_ntl.shp')
+map_prueba = gpd.read_file('src/data/shapefileinegi/marco_municipal_04_23.shp')
 #  transfromacion de datos
 pov_ntl_shp = pov_ntl_shp.join(spdf.set_index("cvegeo"), on="cvegeo", how = "left")
 
@@ -71,7 +72,7 @@ app.layout = html.Div([
    
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run(debug=True,host='127.0.0.1', port=8050)
 
 
 
